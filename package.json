@@ -1,0 +1,40 @@
+{
+  "name": "vue-unstyled-components",
+  "version": "0.0.0",
+  "description": "",
+  "main": "core/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-unstyled-components/vue-unstyled-components.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-components",
+    "unstyled-components",
+    "vue-unstyled-components"
+  ],
+  "author": {
+    "url": "https://guibarscevicius.com.br/",
+    "name": "Guilherme Lico Barscevicius",
+    "email": "guilbrs@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "Vinícius Coimbra de Azevedo",
+      "email": "viniazvd@gmail.com"
+    },
+    {
+      "url": "https://vitorluizc.github.io/",
+      "name": "Vitor Cavalcanti",
+      "email": "vitorluizc@outlook.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vue-unstyled-components/vue-unstyled-components/issues"
+  },
+  "homepage": "https://github.com/vue-unstyled-components/vue-unstyled-components#readme"
+}
