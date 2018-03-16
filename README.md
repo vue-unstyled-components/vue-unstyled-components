@@ -1,8 +1,8 @@
 # vue-unstyled-components
 
-## Development
+## Contribute
 
-> :exclamation:
+> :warning:
 > <br>
 > You should have **node** and **yarn** available on PATH.
 
@@ -12,12 +12,18 @@ Install dependencies.
 yarn
 ```
 
-### NPM Scripts
+We're using Storybook to render and document components + their alternatives.
+It serves at http://localhost:3000/ and watches components + their stories.
 
-- `build` bundle components down to CommonJS ES5 modules.
-  ```sh
-  yarn build
-  ```
+To start storybook use NPM Script `dev`.
+```sh
+yarn dev
+```
+
+To bundle down components to CommonJS ES5 modules use NPM Script `build`.
+```sh
+yarn build
+```
 
 ## License
 
