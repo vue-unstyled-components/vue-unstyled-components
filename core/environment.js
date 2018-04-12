@@ -22,18 +22,16 @@ const ENVIRONMENTS = ['nuxt', 'router', 'external']
  * @param {*} value
  * @returns {boolean}
  */
-const validate = (value) => Boolean(value && ENVIRONMENTS.includes(value))
+export const isEnvironment = (value) => !!value && ENVIRONMENTS.includes(value)
 
 /**
- * Resolve environment considering component scope and $UOptions.
+ * Resolve environment considering component scope and "$ComponentOptions".
  * @param {Vue} Vue
  * @returns {Environment}
  */
-const resolve = (Vue) => {
+export const resolveEnvironment = (Vue) => {
   const component = get(Vue, 'environment')
   const option = get(Vue, '$ComponentOptions.environment')
   const environment = component || option || DEFAULT_ENVIRONMENT
   return environment
 }
-
-export { validate, resolve }
