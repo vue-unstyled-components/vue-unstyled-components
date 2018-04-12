@@ -1,3 +1,5 @@
+import catches from './catches'
+
 /**
  * Get deeply properties from an object.
  * @param {object} object
@@ -5,15 +7,8 @@
  * @returns {*}
  */
 const get = (object, path) => {
-  return catches(() => new Function('o', `return o.${path}`)(object))
-}
-
-const catches = (fn) => {
-  try {
-    return fn()
-  } catch (_) {
-    return _
-  }
+  const getValue = new Function('object', `return object.${path}`)
+  return catches(() => getValue(object))
 }
 
 export default get
