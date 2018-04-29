@@ -4,9 +4,10 @@
   "description": "",
   "main": "core/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava */*.test.js",
     "build": "bili",
-    "dev": "start-storybook -p 3000"
+    "dev": "start-storybook -p 3000",
+    "prepare": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
@@ -41,12 +42,20 @@
   "homepage": "https://github.com/vue-unstyled-components/vue-unstyled-components#readme",
   "devDependencies": {
     "@storybook/vue": "^3.3.15",
+    "@vue/test-utils": "^1.0.0-beta.15",
+    "ava": "^0.25.0",
     "babel-core": "^6.26.0",
     "bili": "^3.0.7",
+    "browser-env": "^3.2.5",
     "glob": "^7.1.2",
     "rollup-plugin-vue": "^3.0.0",
     "vue": "^2.5.15",
     "vue-loader": "^14.2.1",
     "vue-template-compiler": "^2.5.15"
+  },
+  "ava": {
+    "require": [
+      "./ava.setup.js"
+    ]
   }
 }
