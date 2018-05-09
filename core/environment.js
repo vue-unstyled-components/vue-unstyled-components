@@ -2,20 +2,20 @@ import get from './helpers/get'
 
 /**
  * Environment type. It's releated to router/link
- * @typedef {'nuxt'|'router'|'external'} Environment
+ * @typedef {'nuxt'|'router'|'none'} Environment
  */
 
 /**
  * Default environment.
  * @type {Environment}
  */
-const DEFAULT_ENVIRONMENT = 'external'
+const DEFAULT_ENVIRONMENT = 'none'
 
 /**
  * Environment options.
  * @type {Array.<Environment>}
  */
-const ENVIRONMENTS = ['nuxt', 'router', 'external']
+const ENVIRONMENTS = ['nuxt', 'router', 'none']
 
 /**
  * Check if value is a valid environment.
