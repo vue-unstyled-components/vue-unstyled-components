@@ -5,6 +5,10 @@
  */
 'use strict';
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var take = _interopDefault(require('object-take'));
+
 /**
  * Set "$ComponentOptions" on Vue's prototype.
  * @param {Vue} Vue
@@ -14,26 +18,6 @@ var setOptions = function setOptions(Vue, options) {
   var $options = Vue.prototype.$ComponentOptions || {};
   Vue.prototype.$ComponentOptions = Object.assign({}, $options, options);
 };
-
-/**
- * Get deeply properties from an object.
- * @param {object} object
- * @param {string} path
- * @param {*} [placeholder]
- * @returns {*}
- */
-function get(object, path) {
-  var placeholder = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-  var get = new Function('object', "return object.".concat(path));
-
-  try {
-    var value = get(object);
-    if (value == null) return placeholder;
-    return value;
-  } catch (_) {
-    return placeholder;
-  }
-}
 
 /**
  * Environment type. It's releated to router/link
@@ -68,9 +52,8 @@ var isEnvironment = function isEnvironment(value) {
  */
 
 var resolveEnvironment = function resolveEnvironment(Vue) {
-  var component = get(Vue, 'environment');
-  var option = get(Vue, '$ComponentOptions.environment');
-  var environment = component || option || DEFAULT_ENVIRONMENT;
+  var option = take(Vue, '$ComponentOptions.environment');
+  var environment = Vue.environment || option || DEFAULT_ENVIRONMENT;
   return environment;
 };
 
@@ -110,10 +93,8 @@ var Link = {
     },
     environment: {
       type: String,
-      default: null,
-      validator: function validator(value) {
-        return value === null || isEnvironment(value);
-      }
+      default: DEFAULT_ENVIRONMENT,
+      validator: isEnvironment
     },
     isExternal: {
       type: Boolean,

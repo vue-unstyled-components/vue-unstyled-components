@@ -17,7 +17,7 @@
 
 <script>
   import setOptions from '../core/options'
-  import { isEnvironment, resolveEnvironment } from '../core/environment'
+  import { isEnvironment, resolveEnvironment, DEFAULT_ENVIRONMENT } from '../core/environment'
 
   /**
    * Link component element.
@@ -32,8 +32,8 @@
       },
       environment: {
         type: String,
-        default: null,
-        validator: (value) => value === null || isEnvironment(value),
+        default: DEFAULT_ENVIRONMENT,
+        validator: isEnvironment
       },
       isExternal: {
         type: Boolean,

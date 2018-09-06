@@ -1,4 +1,4 @@
-import get from './helpers/get'
+import take from 'object-take'
 
 /**
  * Environment type. It's releated to router/link
@@ -9,7 +9,7 @@ import get from './helpers/get'
  * Default environment.
  * @type {Environment}
  */
-const DEFAULT_ENVIRONMENT = 'none'
+export const DEFAULT_ENVIRONMENT = 'none'
 
 /**
  * Environment options.
@@ -30,8 +30,7 @@ export const isEnvironment = (value) => !!value && ENVIRONMENTS.includes(value)
  * @returns {Environment}
  */
 export const resolveEnvironment = (Vue) => {
-  const component = get(Vue, 'environment')
-  const option = get(Vue, '$ComponentOptions.environment')
-  const environment = component || option || DEFAULT_ENVIRONMENT
+  const option = take(Vue, '$ComponentOptions.environment')
+  const environment = Vue.environment || option || DEFAULT_ENVIRONMENT
   return environment
 }

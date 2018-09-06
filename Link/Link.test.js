@@ -29,8 +29,6 @@ test('Link is an anchor element', (context) => {
     children: text,
   })
 
-  console.log({ ...component.attributes() })
-
   context.is(component.attributes().href, link)
   context.is(component.text(), text)
 })
