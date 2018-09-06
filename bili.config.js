@@ -2,13 +2,13 @@
 
 const glob = require('glob')
 
-const input = glob('./*/*.vue', { sync: true }).filter(
-  (path) => {
-    const COMPONENT_PATH = /\.\/(\w*)\/(\w*)\.vue$/
-    const [ any, folder, file ] = COMPONENT_PATH.exec(path) || []
-    return (any && folder === file)
-  }
-)
+const isComponent = (path) => {
+  const [ matches, directory, file ] = /.\/(.+)\/(.+).vue$/.exec(path) || []
+  const isComponent = Boolean(matches && directory === file)
+  return isComponent
+}
+
+const input = glob('./*/*.vue', { sync: true }).filter(isComponent)
 
 module.exports = {
   input,
