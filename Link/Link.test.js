@@ -2,9 +2,9 @@ import Link from './'
 import test from 'ava'
 import { shallow } from '@vue/test-utils'
 
-const getComponent = ({ link = '', children = '' } = {}) => {
+const getComponent = ({ to = '', children = '' } = {}) => {
   const options = {
-    propsData: { link },
+    propsData: { to },
     slots: {
       default: children
     }
@@ -25,9 +25,11 @@ test('Link is an anchor element', (context) => {
   const text = 'Clique aqui!'
 
   const component = getComponent({
-    link,
+    to: link,
     children: text,
   })
+
+  console.log({ ...component.attributes() })
 
   context.is(component.attributes().href, link)
   context.is(component.text(), text)
