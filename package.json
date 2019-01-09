@@ -57,5 +57,8 @@
     "require": [
       "./ava.setup.js"
     ]
+  },
+  "dependencies": {
+    "object-take": "^0.1.3"
   }
 }
